@@ -1,9 +1,1 @@
 /node_modules
-
-/test/specs/pages/intro.page.js
-/test/specs/pages/roster.page.js
-/test/specs/pages/vote.page.js
-
-/test/specs/tests/roster.spec.js
-/test/specs/tests/smoke.spec.js
-/test/specs/tests/vote.spec.js

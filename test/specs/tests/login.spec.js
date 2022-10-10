@@ -18,8 +18,6 @@ describe('Login Test Suite', ()=>{
         
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-
-        await browser.pause(3000);
     });
     
     it('should display error when email is missing', async() =>{
@@ -33,9 +31,8 @@ describe('Login Test Suite', ()=>{
         
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-
-        await browser.pause(3000);
     });
+
     it('should display error when email and password are missing', async() =>{
         await browser.url('http://localhost:8080/index.html');
 
@@ -46,8 +43,6 @@ describe('Login Test Suite', ()=>{
        
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-        
-        await browser.pause(3000);
     });
 
     it('should display error when email is incorrect', async() =>{
@@ -62,9 +57,6 @@ describe('Login Test Suite', ()=>{
         await browser.pause(3000);
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-
-
-        await browser.pause(3000);
     });
 
     it('should display error when password is incorrect', async() =>{
@@ -79,10 +71,8 @@ describe('Login Test Suite', ()=>{
         await browser.pause(3000);
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-
-
-        await browser.pause(3000);
     });
+
     it('should display error when password case is incorrect', async() =>{
         await browser.url('http://localhost:8080/index.html');
 
@@ -95,9 +85,6 @@ describe('Login Test Suite', ()=>{
         await browser.pause(3000);
         await browser.acceptAlert();
         assert.equal(await browser.isAlertOpen(), false, 'The alert is still open');
-
-
-        await browser.pause(3000);
     });
 
     it('should login with valid email and password', async() =>{
@@ -108,8 +95,6 @@ describe('Login Test Suite', ()=>{
         await LoginPage.submitButton.click();
        
         assert.equal(await LoginPage.overlay.isDisplayed(), false, 'Overlay is still displayed');
-    
-        await browser.pause(3000);
     });
 
     it('should remember login creds', async() =>{
@@ -134,4 +119,23 @@ describe('Login Test Suite', ()=>{
         await browser.pause(3000);
     })
 
+    it('shoud not remember login creds', async() =>{
+        await browser.url('http://localhost:8080/index.html');
+        await browser.setWindowSize(1040, 969);
+
+        await LoginPage.emailField.setValue('1@2.com');
+        await LoginPage.passwordField.setValue('password');
+        await LoginPage.submitButton.click();
+        
+        await browser.pause(1000);
+        await HeaderPage.logoutLink.click();
+
+        assert.equal(await LoginPage.overlay.isDisplayed(), true, 'Overlay is still displayed');
+
+        assert.equal(await LoginPage.emailField.getValue(), '', 'Values are not the same');
+        assert.equal(await LoginPage.passwordField.getValue(), '','Password does not have to be written'); 
+        assert.equal(await LoginPage.rememberLoginCheckbox.isSelected(), false, 'Checkbox is selected');
+        
+        await browser.pause(2000);
+    })
 })
