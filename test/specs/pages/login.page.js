@@ -1,4 +1,4 @@
-class LoginPage{
+class LoginPage {
     get headingText() {
         return $('#login-title');
     }

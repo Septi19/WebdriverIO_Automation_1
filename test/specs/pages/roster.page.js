@@ -1,46 +1,46 @@
 class RosterPage {
-    get instructionText(){
+    get instructionText() {
         return $('body > div.container-fluid > div:nth-child(3) > div > p');
     }
 
-    get listTitle(){
+    get listTitle() {
         return $('body > div.container-fluid > div:nth-child(4) > h3');
     }
 
     // Creating each element individualy
-    get wolverineItem(){
+    get wolverineItem() {
         return $('#hero-list > li:nth-child(1)');
     }
 
-    get ironmanItem(){
+    get ironmanItem() {
         return $('#hero-list > li:nth-child(2)');
     }
 
-    get deadpoolItem(){
+    get deadpoolItem() {
         return $('#hero-list > li:nth-child(3)');
     }
 
-    get thorItem(){
+    get thorItem() {
         return $('#hero-list > li:nth-child(4)');
     }
 
-    get spidermanItem(){
+    get spidermanItem() {
         return $('#hero-list > li:nth-child(5)');
     }
 
-    get newItem(){
+    get newItem() {
         return $('#hero-list > li:nth-child(6)');
     }
 
-    get addHeroLabel(){
+    get addHeroLabel() {
         return $('#addHero-form > div > label');
     }
 
-    get addHeroField(){
+    get addHeroField() {
         return $('#heroInput');
     }
 
-    get submitButton(){
+    get submitButton() {
         return $('#addHero-form > button');
     }
 }

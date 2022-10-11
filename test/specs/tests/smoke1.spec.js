@@ -5,8 +5,8 @@ const IntroPage = require('../pages/intro.page');
 const RosterPage = require('../pages/roster.page');
 const VotePage = require('../pages/vote.page');
 
-describe('Smoke Test Suite 1', ()=> {
-    it('should verify static elements are present', async() =>{
+describe('Smoke Test Suite 1', () => {
+    it('should verify static elements are present', async () => {
         await browser.url('http://localhost:8080/index.html');
         await browser.setWindowSize(1040, 969);
 
@@ -29,7 +29,7 @@ describe('Smoke Test Suite 1', ()=> {
         assert.equal(await HeaderPage.logoutLink.isDisplayed(), true, 'HeaderPage.logoutLink');
         assert.equal(await HeaderPage.linkLink.isDisplayed(), true, 'HeaderPage.linkLink');
         assert.equal(await HeaderPage.heroFactsLink.isDisplayed(), true, 'HeaderPage.heroFactsLink');
-        
+
         await HeaderPage.heroFactsLink.click();
 
         assert.equal(await HeaderPage.wolverineOption.isDisplayed(), true, 'HeaderPage.wolverineOption');
